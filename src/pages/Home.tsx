@@ -10,6 +10,7 @@ const Home = () => {
         info="Welcome to OMDB Search, search something in the bar above!"
         variant="info"
       />
+      <p>{}</p>
     </div>
   );
 };
