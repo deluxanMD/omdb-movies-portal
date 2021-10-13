@@ -2,10 +2,15 @@ import React from "react";
 
 interface IProps {
   info: string;
+  variant: string;
 }
 
 const InfoBox = (props: IProps) => {
-  return <div className="info-box">{props.info}</div>;
+  const { info, variant } = props;
+
+  return (
+    <div className={`${variant === "info" ? "info" : "error"}-box`}>{info}</div>
+  );
 };
 
 export default InfoBox;
