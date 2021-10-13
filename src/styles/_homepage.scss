@@ -1,4 +1,6 @@
 @import "./mixins";
+@import "./key";
+@import "./variables";
 
 .homepage {
   height: 100vh;
@@ -10,8 +12,45 @@
     margin: 0 auto;
     margin-top: 15px;
 
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 90%;
+    }
+
     .card {
+      @include flex-not-center(row);
       margin-bottom: 15px;
+
+      img {
+        height: 300px;
+        width: 225px;
+
+        @media screen and (max-width: $breakpoint-mobile) {
+          height: 200px;
+          width: 135px;
+        }
+      }
+
+      .metadata {
+        @include flex-not-center(column);
+        margin-left: map-get($margin, 2);
+        width: 100%;
+
+        h5 {
+          flex-grow: 0.9;
+        }
+
+        .detail-container {
+          @include flex(row);
+          border-top: 1px solid $light-grey;
+          justify-content: space-between;
+          margin: 0 5px;
+          padding-top: 10px;
+
+          .year {
+            color: $light-grey;
+          }
+        }
+      }
     }
   }
 }

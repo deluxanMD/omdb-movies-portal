@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Redux
 import { RootStateOrAny, useSelector } from "react-redux";
@@ -7,33 +7,50 @@ import { Movie, SearchState } from "../store/types/searchTypes";
 // Components
 import InfoBox from "../components/InfoBox";
 import Loader from "../components/Loader";
-import Card from "../components/Card";
+import MovieCard from "../components/MovieCard";
 
 const Home = () => {
+  // State
+  const [expandedID, setExpandedID] = useState("");
+
+  // Redux Selector
   const search: SearchState = useSelector(
     (state: RootStateOrAny) => state.search
   );
 
-  const renderMovies = () => {
-    const { movies } = search;
+  // Event Handlers
+  const handleDetails = (id: string) => setExpandedID(id);
 
-    if (movies.length > 0) {
-      return movies.map((movie: Movie) => {
-        console.log(movie);
-        return <Card />;
+  const { isLoading, movies, error } = search;
+
+  const renderMovies = () => {
+    if (movies && movies.length > 0) {
+      return movies.map((movie: Movie, index: number) => {
+        return (
+          <MovieCard
+            key={`${movie.imdbID}_${index}`}
+            imdbID={movie.imdbID}
+            poster={movie.Poster}
+            title={movie.Title}
+            year={movie.Year}
+            handleDetails={handleDetails}
+            className={expandedID === movie.imdbID ? "card-full-width" : ""}
+          />
+        );
       });
     }
   };
 
   return (
     <div className="homepage">
-      {search.movies.length < 1 && (
+      {error && <InfoBox info={error} variant="error" />}
+      {!error && movies && movies.length < 1 && (
         <InfoBox
           info="Welcome to OMDB Search, search something in the bar above!"
           variant="info"
         />
       )}
-      {search.isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <div className="homepage-movie-container">{renderMovies()}</div>

@@ -17,7 +17,7 @@ const TopHeader = () => {
 
   // Event Handlers
   const handleChange = (e: any) => setSearchText(e.target.value);
-  const handleClick = () => dispatch(getMovies("avengers"));
+  const handleClick = () => dispatch(getMovies(searchText));
 
   return (
     <div className="top-header">

@@ -1,7 +1,11 @@
 @import "./mixins";
 
 .card {
-  background-color: lightblue;
+  // background-color: lightblue;
   width: 500px;
-  min-height: 300px;
+  box-shadow: 1px 1px 9px -5px rgba(0, 0, 0, 0.68);
+}
+
+.card-full-width {
+  width: 1030px;
 }

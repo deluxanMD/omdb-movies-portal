@@ -14,7 +14,9 @@ const error = (error: any) => ({
 export const getMovies = (searchText: string) => async (dispatch: any) => {
   dispatch(loading());
   const movies: any = await searchMovies(searchText);
-  if (movies.data.Response) {
+  if (movies.data.Response === "True") {
     dispatch(success(movies.data.Search));
+  } else if (movies.data.Response === "False") {
+    dispatch(error(movies.data.Error));
   }
 };

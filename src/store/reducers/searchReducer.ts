@@ -21,11 +21,13 @@ export const searchReducer = (
         ...state,
         isLoading: false,
         movies: action.payload,
+        error: null,
       };
     case SEARCH_TYPE.ERROR:
       return {
         ...state,
         isLoading: false,
+        movies: [],
         error: action.payload,
       };
     default:
