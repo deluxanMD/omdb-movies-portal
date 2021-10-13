@@ -8,6 +8,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  p,
+  h6 {
+    @include zero-space;
+  }
+
   .btn {
     @include no-border;
     padding: map-get($padding, 2);

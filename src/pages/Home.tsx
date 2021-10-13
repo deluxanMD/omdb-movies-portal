@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Redux
-import { RootStateOrAny, useSelector } from "react-redux";
+import { RootStateOrAny, useSelector, useDispatch } from "react-redux";
 import { Movie, SearchState } from "../store/types/searchTypes";
+import { getMovieDetails } from "../store/actions/detailActions";
+import { DetailState } from "../store/types/detailType";
 
 // Components
 import InfoBox from "../components/InfoBox";
@@ -13,13 +15,20 @@ const Home = () => {
   // State
   const [expandedID, setExpandedID] = useState("");
 
-  // Redux Selector
+  // Redux
   const search: SearchState = useSelector(
     (state: RootStateOrAny) => state.search
   );
+  const detail: DetailState = useSelector(
+    (state: RootStateOrAny) => state.detail
+  );
+  const dispatch = useDispatch();
 
   // Event Handlers
-  const handleDetails = (id: string) => setExpandedID(id);
+  const handleDetails = (id: string) => {
+    setExpandedID(id);
+    dispatch(getMovieDetails(id));
+  };
 
   const { isLoading, movies, error } = search;
 
@@ -35,6 +44,7 @@ const Home = () => {
             year={movie.Year}
             handleDetails={handleDetails}
             className={expandedID === movie.imdbID ? "card-full-width" : ""}
+            details={detail.data}
           />
         );
       });

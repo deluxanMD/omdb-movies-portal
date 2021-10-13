@@ -39,12 +39,22 @@
           flex-grow: 0.9;
         }
 
+        .detail-content {
+          // flex-grow: 0.7;
+          // margin-bottom: map-get($margin, 1);
+
+          p {
+            font-size: $small-font;
+          }
+        }
+
         .detail-container {
           @include flex(row);
           border-top: 1px solid $light-grey;
           justify-content: space-between;
-          margin: 0 5px;
+          margin: 0 10px;
           padding-top: 10px;
+          padding-bottom: 10px;
 
           .year {
             color: $light-grey;

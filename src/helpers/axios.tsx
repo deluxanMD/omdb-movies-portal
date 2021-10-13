@@ -7,3 +7,9 @@ export const searchMovies = async (searchText: string) => {
     `${REACT_APP_OMDB_URL}apikey=${REACT_APP_OMDB_API_KEY}&s=${searchText}`
   );
 };
+
+export const searchMovieDetails = async (imdbID: string) => {
+  return await axios.get(
+    `${REACT_APP_OMDB_URL}apikey=${REACT_APP_OMDB_API_KEY}&i=${imdbID}&plot=short`
+  );
+};
