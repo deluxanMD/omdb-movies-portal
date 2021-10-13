@@ -1,0 +1,29 @@
+@import "./mixins";
+@import "./variables";
+@import "./key";
+
+.top-header {
+  @include flex(row);
+  height: 50px;
+  background-color: $white;
+  box-shadow: 1px 6px 9px -5px rgba(0, 0, 0, 0.68);
+
+  h2 {
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: $small-font;
+    }
+  }
+
+  input {
+    @include no-border;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  #{&}-search-container {
+    @include flex(row);
+
+    button {
+      margin-left: map-get($margin, 2);
+    }
+  }
+}

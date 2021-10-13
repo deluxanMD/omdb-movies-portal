@@ -1,0 +1,27 @@
+@import "./variables";
+@import "./mixins";
+@import "./key";
+
+body {
+  @include zero-space;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn {
+  @include no-border;
+  padding: map-get($padding, 2);
+  border-radius: map-get($radius, 1);
+  font-size: $tiny-font;
+  color: $white;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: $primary;
+}
+
+.danger-btn {
+  background-color: $danger;
+}

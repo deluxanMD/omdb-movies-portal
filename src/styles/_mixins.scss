@@ -1,0 +1,16 @@
+@mixin zero-space {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@mixin no-border {
+  border: none;
+  outline: none;
+}
