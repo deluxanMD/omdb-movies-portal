@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+// Redux
+import { useDispatch } from "react-redux";
+import { getMovies } from "../store/actions/searchActions";
+
 // Components
 import TextInput from "./TextInput";
 import Buttons from "./Buttons";
@@ -8,9 +12,12 @@ const TopHeader = () => {
   // States
   const [searchText, setSearchText] = useState("");
 
+  // Redux
+  const dispatch = useDispatch();
+
   // Event Handlers
   const handleChange = (e: any) => setSearchText(e.target.value);
-  const handleClick = () => console.log("clicked");
+  const handleClick = () => dispatch(getMovies("avengers"));
 
   return (
     <div className="top-header">

@@ -1,10 +1,33 @@
-const initialState = {};
+import { SearchState, Movie, SEARCH_TYPE } from "../types/searchTypes";
+
+const initialState: SearchState = {
+  isLoading: false,
+  movies: [],
+  error: null,
+};
 
 export const searchReducer = (
-  state = initialState,
-  action: { type: string; payload: any }
+  state: SearchState = initialState,
+  action: { type: string; payload: Movie }
 ) => {
   switch (action.type) {
+    case SEARCH_TYPE.LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case SEARCH_TYPE.SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        movies: action.payload,
+      };
+    case SEARCH_TYPE.ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

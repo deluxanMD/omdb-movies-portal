@@ -1,3 +1,17 @@
+@import "./mixins";
+
 .homepage {
   height: 100vh;
+
+  #{&}-movie-container {
+    @include flex(row);
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 15px;
+
+    .card {
+      margin-bottom: 15px;
+    }
+  }
 }
