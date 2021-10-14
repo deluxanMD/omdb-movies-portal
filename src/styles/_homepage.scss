@@ -63,4 +63,25 @@
       }
     }
   }
+
+  #{&}-pagination {
+    @include flex(row);
+    flex-wrap: nowrap;
+    // width: 70%;
+    margin: 0 auto;
+    margin-top: 15px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 90%;
+    }
+
+    .page {
+      // @include flex(row);
+      // color: $white;
+      // font-size: $small-font;
+      // width: 25px;
+      // height: 25px;
+      // background-color: $primary;
+    }
+  }
 }

@@ -11,13 +11,14 @@ import Buttons from "./Buttons";
 const TopHeader = () => {
   // States
   const [searchText, setSearchText] = useState("");
+  const [page, setPage] = useState(1);
 
   // Redux
   const dispatch = useDispatch();
 
   // Event Handlers
   const handleChange = (e: any) => setSearchText(e.target.value);
-  const handleClick = () => dispatch(getMovies(searchText));
+  const handleClick = () => dispatch(getMovies(searchText, page));
 
   return (
     <div className="top-header">

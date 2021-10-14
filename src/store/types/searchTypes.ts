@@ -4,6 +4,11 @@ export const SEARCH_TYPE = {
   ERROR: "ERROR",
 };
 
+export interface SearchPayload {
+  Search: Array<Movie>;
+  totalResults: number;
+}
+
 export interface Movie {
   Poster: string;
   Title: string;
@@ -14,6 +19,8 @@ export interface Movie {
 
 export interface SearchState {
   isLoading: boolean;
+  searchText: string;
   movies: Array<Movie>;
+  totalResults: number;
   error: string | null;
 }

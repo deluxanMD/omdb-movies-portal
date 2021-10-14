@@ -10,6 +10,7 @@ import { DetailState } from "../store/types/detailType";
 import InfoBox from "../components/InfoBox";
 import Loader from "../components/Loader";
 import MovieCard from "../components/MovieCard";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
   // State
@@ -30,7 +31,7 @@ const Home = () => {
     dispatch(getMovieDetails(id));
   };
 
-  const { isLoading, movies, error } = search;
+  const { isLoading, movies, totalResults, error } = search;
 
   const renderMovies = () => {
     if (movies && movies.length > 0) {
@@ -65,6 +66,7 @@ const Home = () => {
       ) : (
         <div className="homepage-movie-container">{renderMovies()}</div>
       )}
+      <Pagination total={totalResults} perPage={movies.length} />
     </div>
   );
 };
