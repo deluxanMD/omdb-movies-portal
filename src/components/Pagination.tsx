@@ -32,6 +32,11 @@ const Pagination = (props: IProps) => {
     setCurrentPage(page);
   };
 
+  const handleDropdown = (event: any) => {
+    dispatch(getMovies(search.searchText, event.target.value));
+    setCurrentPage(event.target.value);
+  };
+
   const renderPagination = () => {
     return [
       Array.from({ length }, (_, index) => index + 1).map((page: number) => {
@@ -41,6 +46,7 @@ const Pagination = (props: IProps) => {
               key={page}
               text={page.toString()}
               onClick={() => handlePagination(page)}
+              disabled={page === currentPage}
             />
           );
         } else {
@@ -50,6 +56,7 @@ const Pagination = (props: IProps) => {
                 key={page}
                 text={page.toString()}
                 onClick={() => handlePagination(page)}
+                disabled={page === currentPage}
               />
             );
           } else if (page > length - 10) {
@@ -58,6 +65,7 @@ const Pagination = (props: IProps) => {
                 key={page}
                 text={page.toString()}
                 onClick={() => handlePagination(page)}
+                disabled={page === currentPage}
               />
             );
           } else {
@@ -68,13 +76,41 @@ const Pagination = (props: IProps) => {
     ];
   };
 
+  const renderPaginationMobile = () => {
+    return (
+      <select onChange={handleDropdown} value={currentPage}>
+        {[
+          Array.from({ length }, (_, index) => index + 1).map(
+            (page: number) => {
+              return (
+                <option key={page} value={page}>
+                  {page}
+                </option>
+              );
+            }
+          ),
+        ]}
+      </select>
+    );
+  };
+
   return (
     <Fragment>
       <div className="homepage-pagination">
-        <p>{search.searchText}</p>
-        <Buttons text={"First"} onClick={() => handlePagination(1)} />
-        {renderPagination()}
-        <Buttons text={"Last"} onClick={() => handlePagination(length)} />
+        <Buttons
+          text={"First"}
+          onClick={() => handlePagination(1)}
+          disabled={currentPage === 1 ? true : false}
+        />
+        <div className="homepage-pagination-cotainer">{renderPagination()}</div>
+        <div className="homepage-pagination-cotainer-mobile">
+          {renderPaginationMobile()}
+        </div>
+        <Buttons
+          text={"Last"}
+          onClick={() => handlePagination(length)}
+          disabled={currentPage === length ? true : false}
+        />
       </div>
       <br />
     </Fragment>

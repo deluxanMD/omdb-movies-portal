@@ -23,6 +23,10 @@ body {
     text-transform: uppercase;
     color: $white;
     cursor: pointer;
+
+    &:hover {
+      background-color: $info;
+    }
   }
 
   .primary-btn {
@@ -31,6 +35,11 @@ body {
 
   .danger-btn {
     background-color: $danger;
+  }
+
+  .disable-btn {
+    background-color: $light-grey;
+    cursor: not-allowed;
   }
 
   .info-box {

@@ -74,14 +74,26 @@
     @media screen and (max-width: $breakpoint-mobile) {
       width: 90%;
     }
+  }
 
-    .page {
-      // @include flex(row);
-      // color: $white;
-      // font-size: $small-font;
-      // width: 25px;
-      // height: 25px;
-      // background-color: $primary;
+  #{&}-pagination-cotainer {
+    @media screen and (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+
+    button {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+  }
+
+  #{&}-pagination-cotainer-mobile {
+    @media screen and (min-width: $breakpoint-mobile) {
+      display: none;
+    }
+
+    select {
+      @include no-border;
     }
   }
 }
