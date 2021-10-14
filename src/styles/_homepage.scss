@@ -77,6 +77,8 @@
   }
 
   #{&}-pagination-cotainer {
+    @include flex(row);
+
     @media screen and (max-width: $breakpoint-mobile) {
       display: none;
     }

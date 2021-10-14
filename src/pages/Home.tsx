@@ -31,11 +31,17 @@ const Home = () => {
     dispatch(getMovieDetails(id));
   };
 
+  // Lifecycle
+  useEffect(() => {
+    setExpandedID("");
+  }, []);
+
   const { isLoading, movies, totalResults, error } = search;
 
   const renderMovies = () => {
     if (movies && movies.length > 0) {
       return movies.map((movie: Movie, index: number) => {
+        console.log(expandedID, "===>>>", movie.imdbID);
         return (
           <MovieCard
             key={`${movie.imdbID}_${index}`}
