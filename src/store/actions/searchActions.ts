@@ -25,3 +25,5 @@ export const getMovies =
       dispatch(error(movies.data.Error));
     }
   };
+
+export const clearMovies = () => ({ type: SEARCH_TYPE.CLEAR });

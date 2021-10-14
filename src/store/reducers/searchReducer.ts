@@ -36,6 +36,15 @@ export const searchReducer = (
         totalResults: 0,
         error: action.payload,
       };
+    case SEARCH_TYPE.CLEAR:
+      return {
+        ...state,
+        isLoading: false,
+        searchText: "",
+        movies: [],
+        totalResults: 0,
+        error: null,
+      };
     default:
       return state;
   }

@@ -9,6 +9,8 @@
   box-shadow: 1px 6px 9px -5px rgba(0, 0, 0, 0.68);
 
   h2 {
+    cursor: pointer;
+
     @media screen and (max-width: $breakpoint-mobile) {
       font-size: $small-font;
     }

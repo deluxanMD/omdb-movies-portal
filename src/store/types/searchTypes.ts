@@ -2,6 +2,7 @@ export const SEARCH_TYPE = {
   LOADING: "LOADING",
   SUCCESS: "SUCCESS",
   ERROR: "ERROR",
+  CLEAR: "CLEAR",
 };
 
 export interface SearchPayload {

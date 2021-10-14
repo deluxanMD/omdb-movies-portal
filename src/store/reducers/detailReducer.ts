@@ -34,6 +34,17 @@ export const detailReducer = (
         data: initialState.data,
         error: action.payload,
       };
+    case DETAIL_TYPE.CLEAR:
+      return {
+        ...state,
+        isLoading: false,
+        data: {
+          plot: "",
+          actors: "",
+          ratings: [],
+        },
+        error: null,
+      };
     default:
       return state;
   }

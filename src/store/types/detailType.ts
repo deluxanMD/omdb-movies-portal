@@ -2,6 +2,7 @@ export const DETAIL_TYPE = {
   LOADING: "DETAIL_LOADING",
   SUCCESS: "DETAIL_SUCCESS",
   ERROR: "DETAIL_ERROR",
+  CLEAR: "DETAIL_CLEAR",
 };
 
 export interface Rating {

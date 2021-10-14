@@ -29,3 +29,5 @@ export const getMovieDetails = (imdbID: string) => async (dispatch: any) => {
     );
   }
 };
+
+export const clearMovieDetails = () => ({ type: DETAIL_TYPE.CLEAR });

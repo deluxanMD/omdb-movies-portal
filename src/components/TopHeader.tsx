@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { getMovies } from "../store/actions/searchActions";
+import { getMovies, clearMovies } from "../store/actions/searchActions";
+import { clearMovieDetails } from "../store/actions/detailActions";
 
 // Components
 import TextInput from "./TextInput";
@@ -18,11 +19,19 @@ const TopHeader = () => {
 
   // Event Handlers
   const handleChange = (e: any) => setSearchText(e.target.value);
+
   const handleClick = () => dispatch(getMovies(searchText, page));
+
+  const handleClear = () => {
+    dispatch(clearMovies());
+    dispatch(clearMovieDetails());
+    setSearchText("");
+    setPage(1);
+  };
 
   return (
     <div className="top-header">
-      <h2>OMDB Search</h2>
+      <h2 onClick={handleClear}>OMDB Search</h2>
       <div className="top-header-search-container">
         <TextInput
           type="text"
