@@ -13,6 +13,7 @@ const TopHeader = () => {
   // States
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(false);
 
   // Redux
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const TopHeader = () => {
   // Event Handlers
   const handleChange = (e: any) => setSearchText(e.target.value);
 
-  const handleClick = () => dispatch(getMovies(searchText, page));
+  const handleClick = () => !error && dispatch(getMovies(searchText, page));
 
   const handleClear = () => {
     dispatch(clearMovies());
