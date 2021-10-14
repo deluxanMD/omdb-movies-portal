@@ -66,7 +66,9 @@ const Home = () => {
       ) : (
         <div className="homepage-movie-container">{renderMovies()}</div>
       )}
-      <Pagination total={totalResults} perPage={movies.length} />
+      {movies && movies.length > 0 && (
+        <Pagination total={totalResults} perPage={movies.length} />
+      )}
     </div>
   );
 };
